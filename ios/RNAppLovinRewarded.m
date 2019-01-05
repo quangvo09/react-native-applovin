@@ -56,6 +56,7 @@ RCT_EXPORT_METHOD(requestAd:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromise
     if ([ALIncentivizedInterstitialAd isReadyForDisplay]) {
       reject(@"E_AD_ALREADY_LOADED", @"Ad is already loaded.", nil);
     } else {
+      [ALIncentivizedInterstitialAd shared].adDisplayDelegate = self;
       [ALIncentivizedInterstitialAd preloadAndNotify: self];
     }
 }
@@ -105,6 +106,17 @@ RCT_EXPORT_METHOD(isReady:(RCTResponseSenderBlock)callback)
   }
   
   _requestAdReject(@"E_AD_FAILED_TO_LOAD", error.localizedDescription, error);
+}
+
+#pragma mark - AdDisplayDelegate Methods
+
+- (void)ad:(ALAd *)ad wasClickedIn:(UIView *)view {}
+- (void)ad:(ALAd *)ad wasDisplayedIn:(UIView *)view {}
+
+- (void)ad:(ALAd *)ad wasHiddenIn:(UIView *)view {
+  if (hasListeners) {
+    [self sendEventWithName:kEventAdClosed body:nil];
+  }
 }
 
 #pragma mark VideoPlaybackDelegate
