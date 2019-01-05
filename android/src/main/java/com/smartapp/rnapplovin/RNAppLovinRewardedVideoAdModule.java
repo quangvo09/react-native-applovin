@@ -24,9 +24,9 @@ import com.applovin.sdk.AppLovinAdRewardListener;
 import com.applovin.sdk.AppLovinAdVideoPlaybackListener;
 import com.applovin.sdk.AppLovinErrorCodes;
 
-import java.util.ArrayList;
+import java.util.Map;
 
-public class RNAppLovinRewardedVideoAdModule extends ReactContextBaseJavaModule implements AppLovinAdLoadListener, AppLovinAdDisplayListener, AppLovinAdVideoPlaybackListener, AppLovinAdRewardListener {
+public class RNAppLovinRewardedVideoAdModule extends ReactContextBaseJavaModule implements AppLovinAdLoadListener, AppLovinAdDisplayListener, AppLovinAdVideoPlaybackListener, AppLovinAdRewardListener, AppLovinAdClickListener {
 
     public static final String REACT_CLASS = "RNAppLovinRewarded";
 
@@ -79,8 +79,8 @@ public class RNAppLovinRewardedVideoAdModule extends ReactContextBaseJavaModule 
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                if (mIncent && mIncent.isAdReadyToDisplay()) {
-                    mIncent.show(getCurrentActivity(), RNAppLovinRewardedVideoAdModule.this, RNAppLovinRewardedVideoAdModule.this, RNAppLovinRewardedVideoAdModule.this);
+                if (mIncent != null && mIncent.isAdReadyToDisplay()) {
+                    mIncent.show(getCurrentActivity(), RNAppLovinRewardedVideoAdModule.this, RNAppLovinRewardedVideoAdModule.this, RNAppLovinRewardedVideoAdModule.this, RNAppLovinRewardedVideoAdModule.this);
                     promise.resolve(null);
                 } else {
                     promise.reject("E_AD_NOT_READY", "Ad is not ready.");
@@ -94,7 +94,7 @@ public class RNAppLovinRewardedVideoAdModule extends ReactContextBaseJavaModule 
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-              if (!mIncent) {
+              if (mIncent == null) {
                 callback.invoke(false);
               } else {
                 callback.invoke(mIncent.isAdReadyToDisplay());
@@ -107,6 +107,8 @@ public class RNAppLovinRewardedVideoAdModule extends ReactContextBaseJavaModule 
     // AppLovinAdLoadListener
     @Override
     public void adReceived(AppLovinAd appLovinAd) {
+      sendEvent(EVENT_AD_LOADED, null);
+      mRequestAdPromise.resolve(null);
     }
 
     @Override
@@ -208,4 +210,11 @@ public class RNAppLovinRewardedVideoAdModule extends ReactContextBaseJavaModule 
     @Override
     public void userDeclinedToViewAd(final AppLovinAd ad) {
     }
+
+    // -------------------------
+    // AppLovinAdClickListener
+    @Override
+    public void adClicked(final AppLovinAd appLovinAd) {
+    }
+
 }
