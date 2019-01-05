@@ -32,5 +32,9 @@ repositories {
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
+    // Import latest AppLovin SDK from JCenter
+    compile "com.applovin:applovin-sdk:+"
+    // For AppLovin SDK
+    compile "com.google.android.gms:play-services-ads:+"
 }
   

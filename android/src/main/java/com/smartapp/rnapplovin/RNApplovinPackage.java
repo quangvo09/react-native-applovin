@@ -13,7 +13,10 @@ import com.facebook.react.bridge.JavaScriptModule;
 public class RNApplovinPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-      return Arrays.<NativeModule>asList(new RNApplovinModule(reactContext));
+      return Arrays.<NativeModule>asList(
+        new RNApplovinModule(reactContext),
+        new RNAppLovinRewardedVideoAdModule(reactContext),
+      );
     }
 
     // Deprecated from RN 0.47
