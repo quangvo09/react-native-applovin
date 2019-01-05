@@ -128,7 +128,7 @@ RCT_EXPORT_METHOD(isReady:(RCTResponseSenderBlock)callback)
 }
 
 - (void)videoPlaybackEndedInAd:(ALAd *)ad atPlaybackPercent:(NSNumber *)percentPlayed fullyWatched:(BOOL)wasFullyWatched {
-  if (fullyWatched && hasListeners) {
+  if (wasFullyWatched && hasListeners) {
     [self sendEventWithName:kEventVideoCompleted body:nil];
   }
 }
@@ -148,14 +148,6 @@ RCT_EXPORT_METHOD(isReady:(RCTResponseSenderBlock)callback)
 
 - (void)rewardValidationRequestForAd:(ALAd *)ad didFailWithError:(NSInteger)responseCode {
 
-}
-
-- (BOOL)somaAdViewShouldEnterFullscreen:(SOMAAdView*)adview{
-  if (hasListeners) {
-    [self sendEventWithName:kEventAdOpened body:nil];
-  }
-
-  return YES;
 }
 
 @end

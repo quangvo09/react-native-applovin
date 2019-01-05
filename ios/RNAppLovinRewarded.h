@@ -8,7 +8,7 @@
 
 #import <AppLovinSDK/AppLovinSDK.h>
 
-@interface RNAppLovinRewarded : RCTEventEmitter <RCTBridgeModule, ALAdLoadDelegate, ALAdRewardDelegate>
+@interface RNAppLovinRewarded : RCTEventEmitter <RCTBridgeModule, ALAdLoadDelegate, ALAdDisplayDelegate, ALAdRewardDelegate>
 
 @end
   
