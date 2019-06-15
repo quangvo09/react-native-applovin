@@ -1,4 +1,4 @@
-package com.smartapp.rnadcolony;
+package com.smartapp.rnapplovin;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -16,15 +16,16 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
-import com.applovin.adview.AppLovinIncentivizedInterstitial;
 import com.applovin.sdk.AppLovinAd;
+import com.applovin.adview.AppLovinInterstitialAd;
+import com.applovin.adview.AppLovinInterstitialAdDialog;
 import com.applovin.sdk.AppLovinAdClickListener;
 import com.applovin.sdk.AppLovinAdDisplayListener;
 import com.applovin.sdk.AppLovinAdLoadListener;
-import com.applovin.sdk.AppLovinAdRewardListener;
 import com.applovin.sdk.AppLovinAdVideoPlaybackListener;
 import com.applovin.sdk.AppLovinErrorCodes;
 import com.applovin.sdk.AppLovinAdSize;
+import com.applovin.sdk.AppLovinSdk;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,10 +54,10 @@ public class RNAppLovinInterstitialAdModule extends ReactContextBaseJavaModule {
         return REACT_CLASS;
     }
 
-    public RNAdColonyInterstitialAdModule(ReactApplicationContext reactContext) {
+    public RNAppLovinInterstitialAdModule(ReactApplicationContext reactContext) {
         super(reactContext);
 
-        interstitialAd = AppLovinInterstitialAd.create(AppLovinSdk.getInstance(getReactApplicationContext()), getCurrentActivity());
+        interstitialAd = AppLovinInterstitialAd.create(AppLovinSdk.getInstance(reactContext), reactContext);
 
         interstitialAd.setAdDisplayListener(new AppLovinAdDisplayListener()
         {
@@ -73,8 +74,13 @@ public class RNAppLovinInterstitialAdModule extends ReactContextBaseJavaModule {
           }
         });
 
-        interstitialAd.setAdVideoPlaybackListener( new AppLovinAdVideoPlaybackListener()
+        interstitialAd.setAdVideoPlaybackListener(new AppLovinAdVideoPlaybackListener()
         {
+          @Override
+          public void videoPlaybackBegan(AppLovinAd appLovinAd)
+          {
+          }
+
           @Override
           public void videoPlaybackEnded(AppLovinAd appLovinAd, double percentViewed, boolean wasFullyViewed)
           {
