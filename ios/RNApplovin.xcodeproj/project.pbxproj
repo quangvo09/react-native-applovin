@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B3E7B58A1CC2AC0600A0062D /* RNApplovin.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNApplovin.m */; };
 		DD67359121E05A000051DB1B /* RNAppLovinRewarded.m in Sources */ = {isa = PBXBuildFile; fileRef = DD67359021E05A000051DB1B /* RNAppLovinRewarded.m */; };
+		DDBD422F22B5036F00FF5C8D /* RNAppLovinnterstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBD422D22B5036F00FF5C8D /* RNAppLovinnterstitial.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,8 @@
 		B3E7B5891CC2AC0600A0062D /* RNApplovin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNApplovin.m; sourceTree = "<group>"; };
 		DD67358F21E05A000051DB1B /* RNAppLovinRewarded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAppLovinRewarded.h; sourceTree = "<group>"; };
 		DD67359021E05A000051DB1B /* RNAppLovinRewarded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAppLovinRewarded.m; sourceTree = "<group>"; };
+		DDBD422D22B5036F00FF5C8D /* RNAppLovinnterstitial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAppLovinnterstitial.m; sourceTree = "<group>"; };
+		DDBD422E22B5036F00FF5C8D /* RNAppLovinInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAppLovinInterstitial.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +56,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				DDBD422E22B5036F00FF5C8D /* RNAppLovinInterstitial.h */,
+				DDBD422D22B5036F00FF5C8D /* RNAppLovinnterstitial.m */,
 				DD67358F21E05A000051DB1B /* RNAppLovinRewarded.h */,
 				DD67359021E05A000051DB1B /* RNAppLovinRewarded.m */,
 				B3E7B5881CC2AC0600A0062D /* RNApplovin.h */,
@@ -119,6 +124,7 @@
 			files = (
 				DD67359121E05A000051DB1B /* RNAppLovinRewarded.m in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* RNApplovin.m in Sources */,
+				DDBD422F22B5036F00FF5C8D /* RNAppLovinnterstitial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
