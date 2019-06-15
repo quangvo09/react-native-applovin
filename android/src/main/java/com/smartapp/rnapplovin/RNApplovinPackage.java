@@ -15,7 +15,8 @@ public class RNApplovinPackage implements ReactPackage {
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
       return Arrays.<NativeModule>asList(
         new RNApplovinModule(reactContext),
-        new RNAppLovinRewardedVideoAdModule(reactContext)
+        new RNAppLovinRewardedVideoAdModule(reactContext),
+        new RNAppLovinInterstitialAdModule(reactContext)
       );
     }
 
