@@ -33,7 +33,7 @@ import java.util.Map;
 
 public class RNAppLovinInterstitialAdModule extends ReactContextBaseJavaModule {
 
-    public static final String REACT_CLASS = "RNAdColonyInterstitial";
+    public static final String REACT_CLASS = "RNAppLovinInterstitial";
 
     public static final String EVENT_AD_LOADED = "interstitialAdLoaded";
     public static final String EVENT_AD_FAILED_TO_LOAD = "interstitialAdFailedToLoad";
