@@ -8,8 +8,8 @@
 
 #import <AppLovinSDK/AppLovinSDK.h>
 
-@property (nonatomic, strong) ALAd *ad;
-@end
-
 @interface RNAppLovinInterstitial : RCTEventEmitter <RCTBridgeModule>
+
+@property (nonatomic, strong) ALAd *loadedAd;
+
 @end

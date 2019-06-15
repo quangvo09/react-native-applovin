@@ -184,6 +184,10 @@ public class RNAppLovinRewardedVideoAdModule extends ReactContextBaseJavaModule 
     @Override
     public void videoPlaybackEnded(final AppLovinAd ad, final double percentViewed, final boolean fullyWatched) {
       sendEvent(EVENT_VIDEO_COMPLETED, null);
+      if (fullyWatched) {
+        WritableMap reward = Arguments.createMap();
+        sendEvent(EVENT_REWARDED, reward);
+      }
     }
 
     // -------------------------

@@ -15,7 +15,6 @@ static NSString *const kEventAdLeftApplication = @"interstitialAdLeftApplication
 
 @implementation RNAppLovinInterstitial
 {
-    AdColonyInterstitial *_interstitial;
     NSArray *_testDevices;
     RCTPromiseResolveBlock _requestAdResolve;
     RCTPromiseRejectBlock _requestAdReject;
@@ -50,7 +49,6 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(setAdUnitID:(NSString *)adUnitID)
 {
-    _adUnitID = adUnitID;
 }
 
 RCT_EXPORT_METHOD(requestAd:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
@@ -68,7 +66,7 @@ RCT_EXPORT_METHOD(requestAd:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromise
 RCT_EXPORT_METHOD(showAd:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
     if (isReady) {
-      [[ALInterstitialAd shared] showOver: [UIApplication sharedApplication].keyWindow andRender: self.ad];
+      [[ALInterstitialAd shared] showOver: [UIApplication sharedApplication].keyWindow andRender: self.loadedAd];
       resolve(nil);
     }
     else {
@@ -95,7 +93,7 @@ RCT_EXPORT_METHOD(isReady:(RCTResponseSenderBlock)callback)
 
 - (void)adService:(nonnull ALAdService *)adService didLoadAd:(nonnull ALAd *)ad
 {
-    self.ad = ad;
+    self.loadedAd = ad;
     isReady = true;
     if (hasListeners) {
         [self sendEventWithName:kEventAdLoaded body:nil];
